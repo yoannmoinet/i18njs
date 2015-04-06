@@ -115,7 +115,7 @@
                 }
             }
         };
-        this.t = function (key, data, options) {
+        this.get = function (key, data, options) {
             var ar = key.split('.');
             var obj = this.string[this.lng];
             options = options || {};
