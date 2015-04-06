@@ -1,0 +1,21 @@
+{
+  "name": "i18njs",
+  "version": "1.0.0",
+  "description": "A simple i18n for Javascript with a templating feature.",
+  "main": "i18njs.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yoannmoinet/i18njs.git"
+  },
+  "keywords": [
+    "i18n",
+    "translation",
+    "template"
+  ],
+  "author": "Yoann Moinet <yoann.moinet@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoannmoinet/i18njs/issues"
+  },
+  "homepage": "https://github.com/yoannmoinet/i18njs"
+}
