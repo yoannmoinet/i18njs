@@ -18,7 +18,7 @@ or
 
 bower install --save i18njs
 
-``` 
+```
 
 ## Usage
 
