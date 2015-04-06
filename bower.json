@@ -1,0 +1,29 @@
+{
+  "name": "i18njs",
+  "main": "i18njs.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/yoannmoinet/i18njs",
+  "authors": [
+    "Yoann Moinet <yoann.moinet@gmail.com>"
+  ],
+  "description": "A simple i18n for JavaScript with a templating feature.",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "i18n",
+    "translation",
+    "template"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "*.sublime-*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
