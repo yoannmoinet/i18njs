@@ -29,35 +29,51 @@ After importing it `var i18n = require('i18njs');`
 
 ### Add locales
 
-By default, language is set to `en`.
-
 ```javascript
 
-var en = {
+var en_locales = {
 	'hello_world': {
 		'hello': 'Hello',
 		'world': 'World'
 	}
 };
-// i18n.add(language, namespace [optional], locales);
-i18n.add('en', 'first_test', en);
+
+// i18n.add(language, [namespace,] locales);
+i18n.add('en', 'first_test', en_locales);
 
 ```
 
 ### Change language
+
+By default, language is set to `en`.
 
 ```javascript
 
 i18n.lng = 'fr';
 
 ```
+### Check for availability
+
+If needed, you can also check for the presence of a specific localized string in a particular language.
+
+You can check only the language too.
+
+ ```javascript
+ // i18n.has([key,] lang)
+ i18n.has('first_test.hello_world.hello', 'en'); 
+ // true
+
+ i18n.has('en');
+ // true
+ ```
 
 ### Get basic localized string
 
 ```javascript
 
-// i18n.get(key, data, options);
-i18n.get('first_test.hello_world.hello'); // Hello
+// i18n.get(key[, data, options]);
+i18n.get('first_test.hello_world.hello');
+// Hello
 
 ```
 
@@ -69,7 +85,7 @@ It works in the form of `{{=interpolate}}`, `{{evaluate}}` or `{{-escape}}` :
 
 ```javascript
 
-var en = {
+var en_locales = {
 	'st': '{{=interpolate}} {{for(var i = 0, max = 1; i < max; i += 1) {}}to{{}}} {{-escape}}'
 };
 
@@ -78,7 +94,8 @@ var data = {
 	'escape': '\'<the>\' `&` "World"'
 };
 
-i18n.add('en', en);
+i18n.add('en', en_locales);
+
 var st = i18n.get('st', data);
 // "Hello  to  &#x27;&lt;the&gt;&#x27; &#x60;&amp;&#x60; &quot;World&quot;"
 
