@@ -84,6 +84,13 @@ define(function (require, exports, module) {
         return template;
     }
     /*---- END TEMPLATE ----*/
+    var parse = function (key, obj) {
+        var ar = key.split('.');
+        while (obj && ar.length) {
+            obj = obj[ar.shift()];
+        }
+        return obj;
+    }
     var I18n = function () {
         this.lng = lng;
         this.string = {};
@@ -109,13 +116,16 @@ define(function (require, exports, module) {
                 }
             }
         };
-        this.get = function (key, data, options) {
-            var ar = key.split('.');
-            var obj = this.string[this.lng];
-            options = options || {};
-            while (obj && ar.length) {
-                obj = obj[ar.shift()];
+        this.has = function (key, lang) {
+            var keyToParse = key;
+            if (lang) {
+                keyToParse = lang + '.' + keyToParse;
             }
+            return parse(keyToParse, this.string) ? true : false;
+        };
+        this.get = function (key, data, options) {
+            var obj = parse(this.lng + '.' + key, this.string);
+            options = options || {};
             if (obj && typeof data === 'object') {
                 var settings = {
                     evaluate: options.evaluate || this.evaluate,
