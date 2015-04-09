@@ -123,8 +123,16 @@ define(function (require, exports, module) {
             }
             return parse(keyToParse, this.string) ? true : false;
         };
-        this.get = function (key, data, options) {
-            var obj = parse(this.lng + '.' + key, this.string);
+        this.get = function (key, data, options, lang) {
+            var lng = lang || this.lng;
+            if (lang === undefined) {
+                if (typeof data === 'string') {
+                    lng = data;
+                } else if (typeof options === 'string') {
+                    lng = options;
+                }
+            }
+            var obj = parse(lng + '.' + key, this.string);
             options = options || {};
             if (obj && typeof data === 'object') {
                 var settings = {
