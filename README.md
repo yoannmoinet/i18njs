@@ -38,8 +38,16 @@ var en_locales = {
 	}
 };
 
+var fr_locales = {
+	'hello_world': {
+		'hello': 'Bonjour',
+		'world': 'Monde'
+	}
+};
+
 // i18n.add(language, [namespace,] locales);
 i18n.add('en', 'first_test', en_locales);
+i18n.add('fr', 'first_test', fr_locales);
 
 ```
 
@@ -71,9 +79,12 @@ You can check only the language too.
 
 ```javascript
 
-// i18n.get(key[, data, options]);
+// i18n.get(key[, data, options][, lang]);
 i18n.get('first_test.hello_world.hello');
 // Hello
+
+i18n.get('first_test.hello_world.hello', 'fr');
+// Bonjour
 
 ```
 
