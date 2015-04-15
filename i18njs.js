@@ -93,22 +93,22 @@ define(function (require, exports, module) {
     }
     var I18n = function () {
         this.lng = lng;
-        this.string = {};
+        this.dico = {};
         this.evaluate = /\{\{([\s\S]+?)\}\}/g;
         this.interpolate = /\{\{=([\s\S]+?)\}\}/g;
         this.escape = /\{\{-([\s\S]+?)\}\}/g;
 
         this.add = function (lang, ns, locales) {
             var i;
-            this.string[lang] = this.string[lang] || {};
+            this.dico[lang] = this.dico[lang] || {};
 
             if (locales === undefined) {
                 locales = ns;
                 ns = undefined;
-                obj = this.string[lang];
+                obj = this.dico[lang];
             } else {
-                this.string[lang][ns] = this.string[lang][ns] || {};
-                obj = this.string[lang][ns];
+                this.dico[lang][ns] = this.dico[lang][ns] || {};
+                obj = this.dico[lang][ns];
             }
             for (i in locales) {
                 if (locales.hasOwnProperty(i)) {
@@ -121,7 +121,7 @@ define(function (require, exports, module) {
             if (lang) {
                 keyToParse = lang + '.' + keyToParse;
             }
-            return parse(keyToParse, this.string) ? true : false;
+            return parse(keyToParse, this.dico) ? true : false;
         };
         this.get = function (key, data, options, lang) {
             var lng = lang || this.lng;
@@ -132,7 +132,7 @@ define(function (require, exports, module) {
                     lng = options;
                 }
             }
-            var obj = parse(lng + '.' + key, this.string);
+            var obj = parse(lng + '.' + key, this.dico);
             options = options || {};
             if (obj && typeof data === 'object') {
                 var settings = {
