@@ -3,6 +3,9 @@
   "version": "1.3.0",
   "description": "A simple i18n for Javascript with a templating feature.",
   "main": "i18njs.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/yoannmoinet/i18njs.git"
@@ -17,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/yoannmoinet/i18njs/issues"
   },
-  "homepage": "https://github.com/yoannmoinet/i18njs"
+  "homepage": "https://github.com/yoannmoinet/i18njs",
+  "devDependencies": {
+    "jasmine": "^2.2.1"
+  }
 }
