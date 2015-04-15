@@ -65,7 +65,7 @@ define(function (require, exports, module) {
             return match;
         });
         source += "';\n";
-        source = 'with(obj){\n' + source + '}\n';
+        source = 'with(obj||{}){\n' + source + '}\n';
         source = "var __t,__p='',__j=Array.prototype.join," +
             "print=function(){__p+=__j.call(arguments,'');};\n" +
             source + 'return __p;\n';
@@ -128,13 +128,14 @@ define(function (require, exports, module) {
             if (lang === undefined) {
                 if (typeof data === 'string') {
                     lng = data;
+                    data = undefined;
                 } else if (typeof options === 'string') {
                     lng = options;
                 }
             }
             var obj = parse(lng + '.' + key, this.dico);
             options = options || {};
-            if (obj && typeof data === 'object') {
+            if (typeof obj === 'string') {
                 var settings = {
                     evaluate: options.evaluate || this.evaluate,
                     interpolate: options.interpolate || this.interpolate,
