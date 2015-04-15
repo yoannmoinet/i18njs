@@ -1,7 +1,7 @@
 {
   "name": "i18njs",
   "main": "i18njs.js",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "homepage": "https://github.com/yoannmoinet/i18njs",
   "authors": [
     "Yoann Moinet <yoann.moinet@gmail.com>"

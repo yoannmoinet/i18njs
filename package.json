@@ -1,6 +1,6 @@
 {
   "name": "i18njs",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A simple i18n for Javascript with a templating feature.",
   "main": "i18njs.js",
   "scripts": {
