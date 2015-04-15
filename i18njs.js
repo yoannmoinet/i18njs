@@ -117,10 +117,8 @@ define(function (require, exports, module) {
             }
         };
         this.has = function (key, lang) {
-            var keyToParse = key;
-            if (lang) {
-                keyToParse = lang + '.' + keyToParse;
-            }
+            lang = lang || this.lng;
+            var keyToParse = lang + '.' + key;
             return parse(keyToParse, this.dico) ? true : false;
         };
         this.get = function (key, data, options, lang) {
