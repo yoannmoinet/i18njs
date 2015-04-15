@@ -142,8 +142,9 @@ define(function (require, exports, module) {
                     escape: options.escape || this.escape
                 };
                 obj = template(obj, settings)(data);
+                return obj;
             }
-            return obj || key;
+            return key;
         };
     };
     module.exports = new I18n();
