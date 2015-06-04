@@ -23,6 +23,14 @@ bower install --save i18njs
 
 ```
 
+## Test
+
+```node
+
+npm test
+
+```
+
 ## Usage
 
 After importing it `var i18n = require('i18njs');`
@@ -77,6 +85,15 @@ You can check only the language too.
  i18n.has('en');
  // true
  ```
+
+### List available languages
+
+```javascript
+
+i18n.langs();
+// ['en', 'fr']
+
+```
 
 ### Get basic localized string
 

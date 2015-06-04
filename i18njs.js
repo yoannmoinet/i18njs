@@ -128,6 +128,13 @@ define(function (require, exports, module) {
             // Check for the key and lang
             return parse(keyToParse, this.dico) ? true : false;
         };
+        this.langs = function () {
+            var langs = [];
+            for (var i in this.dico) {
+                langs.push(i);
+            }
+            return langs;
+        };
         this.get = function (key, data, options, lang) {
             var lng = lang || this.lng;
             if (lang === undefined) {

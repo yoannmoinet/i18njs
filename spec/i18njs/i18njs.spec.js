@@ -65,6 +65,13 @@ describe('i18njs', function () {
 		expect(i18n.has('nl')).toBeFalsy();
 	});
 
+	it('should list all available languages', function () {
+		var langs = i18n.langs();
+		expect(langs).toContain('en');
+		expect(langs).toContain('fr');
+		expect(langs.length).toEqual(2);
+	});
+
 	it('should interpolate data', function () {
 		expect(i18n.get('ns.inter', {key: 'value'})).toEqual('value');
 	});
