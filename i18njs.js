@@ -119,6 +119,13 @@ define(function (require, exports, module) {
         this.has = function (key, lang) {
             lang = lang || this.lng;
             var keyToParse = lang + '.' + key;
+
+            // Check for the lang
+            if (this.dico[key]) {
+                return true;
+            }
+
+            // Check for the key and lang
             return parse(keyToParse, this.dico) ? true : false;
         };
         this.get = function (key, data, options, lang) {

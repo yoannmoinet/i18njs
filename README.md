@@ -68,7 +68,10 @@ You can check only the language too.
 
  ```javascript
  // i18n.has([key,] lang)
- i18n.has('first_test.hello_world.hello', 'en'); 
+ i18n.has('first_test.hello_world.hello', 'en');
+ // true
+
+ i18n.has('first_test.hello_world.hello');
  // true
 
  i18n.has('en');

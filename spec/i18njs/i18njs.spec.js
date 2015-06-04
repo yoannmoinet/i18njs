@@ -61,6 +61,8 @@ describe('i18njs', function () {
 		expect(i18n.has('ns.inEnglish')).toBeFalsy();
 		expect(i18n.has('ns.enFrançais', 'en')).toBeFalsy();
 		expect(i18n.has('ns.inEnglish', 'fr')).toBeFalsy();
+		expect(i18n.has('en')).toBeTruthy();
+		expect(i18n.has('nl')).toBeFalsy();
 	});
 
 	it('should interpolate data', function () {
