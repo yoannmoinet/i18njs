@@ -155,6 +155,8 @@ define(function (require, exports, module) {
                 };
                 obj = template(obj, settings)(data);
                 return obj;
+            } else if (typeof obj === 'object') {
+                return obj;
             }
             return key;
         };

@@ -85,7 +85,17 @@ describe('i18njs', function () {
 	});
 
 	it('should default when not found', function () {
-		expect(i18n.get('ns')).toEqual('ns');
 		expect(i18n.get('test.on.inexistant.string')).toEqual('test.on.inexistant.string');
+	});
+
+	it('should send the object when result is not string', function () {
+		expect(i18n.get('ns')).toEqual({
+				'hello': 'Bonjour',
+				'world': 'Monde',
+				'enFrançais': 'enFrançais',
+				'inter': '{{=key}}',
+				'eval': '{{for(var i = 0, max = 3; i < 3; i += 1) {}}eval {{}}}',
+				'escape': '{{-escape}}'
+			});
 	});
 });
