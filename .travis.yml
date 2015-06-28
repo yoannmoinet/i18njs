@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+    - '0.12'
+before_install:
+    - currentfolder=${PWD##*/}
+    - if [ "$currentfolder" != 'i18njs' ]; then cd .. && eval "mv $currentfolder i18njs" && cd i18njs; fi
+after_install: npm test

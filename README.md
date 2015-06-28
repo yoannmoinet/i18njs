@@ -4,6 +4,7 @@ A simple i18n for Javascript with a templating feature.
 
 [![npm version](https://img.shields.io/npm/v/i18njs.svg?style=flat)](http://badge.fury.io/js/i18njs)
 [![bower version](https://img.shields.io/bower/v/i18njs.svg?style=flat)](http://bower.io/search/?q=i18njs)
+[![travis](https://travis-ci.org/yoannmoinet/i18njs.svg)]
 
 ## Installation
 
