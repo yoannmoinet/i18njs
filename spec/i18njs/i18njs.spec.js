@@ -66,7 +66,7 @@ describe('i18njs', function () {
 	});
 
 	it('should list all available languages', function () {
-		var langs = i18n.langs();
+		var langs = i18n.listLangs();
 		expect(langs).toContain('en');
 		expect(langs).toContain('fr');
 		expect(langs.length).toEqual(2);

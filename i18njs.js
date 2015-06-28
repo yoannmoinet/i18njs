@@ -155,7 +155,7 @@ define(function (require, exports, module) {
             return parse(keyToParse, dico) ? true : false;
         };
 
-        this.langs = function () {
+        this.listLangs = function () {
             var langs = [];
 
             for (var i in dico) {

@@ -106,7 +106,7 @@ You can check only the language too.
 
 ```javascript
 
-i18n.langs();
+i18n.listLangs();
 // ['en', 'fr']
 
 ```
