@@ -9,7 +9,7 @@
     "postversion": "npm run-script changelog",
     "test": "./node_modules/.bin/jasmine",
     "lint": "./node_modules/.bin/jscs i18njs.js",
-    "changelog": "node ./node_modules/conventional-changelog/index.js -o ../../CHANGELOG.md -p 'angular' -v -w -b"
+    "changelog": "./node_modules/.bin/conventional-changelog -i CHANGELOG.md -w -b"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/yoannmoinet/i18njs",
   "devDependencies": {
-    "conventional-changelog": "0.0.17",
+    "conventional-changelog": "0.1.0-alpha.1",
     "jasmine": "^2.2.1",
     "jscs": "^1.13.1"
   }
