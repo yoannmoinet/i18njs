@@ -4,8 +4,12 @@
   "description": "A simple i18n for Javascript with a templating feature.",
   "main": "i18njs.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine && npm run-script lint",
-    "lint": "./node_modules/.bin/jscs i18njs.js"
+    "posttest": "npm run-script lint",
+    "preversion": "npm test",
+    "postversion": "npm run-script changelog",
+    "test": "./node_modules/.bin/jasmine",
+    "lint": "./node_modules/.bin/jscs i18njs.js",
+    "changelog": "./node_modules/.bin/conventional-changelog-generator"
   },
   "repository": {
     "type": "git",
