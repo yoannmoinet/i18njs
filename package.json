@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/yoannmoinet/i18njs",
   "devDependencies": {
+    "conventional-changelog-generator": "0.0.3",
     "jasmine": "^2.2.1",
     "jscs": "^1.13.1"
   }
