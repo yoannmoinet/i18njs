@@ -28,27 +28,27 @@ describe('i18njs', function () {
 	});
 
 	it('should add locales to the dictionary', function () {
-		expect(i18n.dico.en.ns.hello).toEqual('Hello');
-		expect(i18n.dico.en.ns.world).toEqual('World');
-		expect(i18n.dico.en.ns.inter).toEqual('{{=key}}');
-		expect(i18n.dico.en.ns.eval).toEqual('{{for(var i = 0, max = 3; i < 3; i += 1) {}}eval {{}}}');
-		expect(i18n.dico.en.ns.escape).toEqual('{{-escape}}');
+		expect(i18n.getDico().en.ns.hello).toEqual('Hello');
+		expect(i18n.getDico().en.ns.world).toEqual('World');
+		expect(i18n.getDico().en.ns.inter).toEqual('{{=key}}');
+		expect(i18n.getDico().en.ns.eval).toEqual('{{for(var i = 0, max = 3; i < 3; i += 1) {}}eval {{}}}');
+		expect(i18n.getDico().en.ns.escape).toEqual('{{-escape}}');
 
-		expect(i18n.dico.fr.ns.hello).toEqual('Bonjour');
-		expect(i18n.dico.fr.ns.world).toEqual('Monde');
-		expect(i18n.dico.fr.ns.inter).toEqual('{{=key}}');
-		expect(i18n.dico.fr.ns.eval).toEqual('{{for(var i = 0, max = 3; i < 3; i += 1) {}}eval {{}}}');
-		expect(i18n.dico.fr.ns.escape).toEqual('{{-escape}}');
+		expect(i18n.getDico().fr.ns.hello).toEqual('Bonjour');
+		expect(i18n.getDico().fr.ns.world).toEqual('Monde');
+		expect(i18n.getDico().fr.ns.inter).toEqual('{{=key}}');
+		expect(i18n.getDico().fr.ns.eval).toEqual('{{for(var i = 0, max = 3; i < 3; i += 1) {}}eval {{}}}');
+		expect(i18n.getDico().fr.ns.escape).toEqual('{{-escape}}');
 	});
 
 	it('should be in english by default', function () {
-		expect(i18n.lng).toEqual('en');
+		expect(i18n.getCurrentLang()).toEqual('en');
 		expect(i18n.get('ns.hello')).toEqual('Hello');
 		expect(i18n.get('ns.world')).toEqual('World');
 	});
 
 	it('should be able to switch language', function () {
-		i18n.lng = 'fr';
+		i18n.setLang('fr');
 		expect(i18n.get('ns.hello')).toEqual('Bonjour');
 		expect(i18n.get('ns.world')).toEqual('Monde');
 	});

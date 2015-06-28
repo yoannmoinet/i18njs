@@ -5,8 +5,6 @@ if (typeof exports === 'object' && typeof define !== 'function') {
 }
 
 define(function (require, exports, module) {
-    var lng = 'en';
-
     /*-------------------------------------------*\
     |  TEMPLATE SYSTEM
     |  Based on Underscore's
@@ -114,24 +112,26 @@ define(function (require, exports, module) {
     };
 
     var I18n = function () {
-        this.lng = lng;
-        this.dico = {};
-        this.evaluate = /\{\{([\s\S]+?)\}\}/g;
-        this.interpolate = /\{\{=([\s\S]+?)\}\}/g;
-        this.escape = /\{\{-([\s\S]+?)\}\}/g;
+        // PRIVATES
+        var local_lang = 'en';
+        var dico = {};
+        var params = {};
+        var evaluate = /\{\{([\s\S]+?)\}\}/g;
+        var interpolate = /\{\{=([\s\S]+?)\}\}/g;
+        var escape = /\{\{-([\s\S]+?)\}\}/g;
 
         this.add = function (lang, ns, locales) {
             var i;
 
-            this.dico[lang] = this.dico[lang] || {};
+            dico[lang] = dico[lang] || {};
 
             if (locales === undefined) {
                 locales = ns;
                 ns = undefined;
-                obj = this.dico[lang];
+                obj = dico[lang];
             } else {
-                this.dico[lang][ns] = this.dico[lang][ns] || {};
-                obj = this.dico[lang][ns];
+                dico[lang][ns] = dico[lang][ns] || {};
+                obj = dico[lang][ns];
             }
 
             for (i in locales) {
@@ -142,31 +142,44 @@ define(function (require, exports, module) {
         };
 
         this.has = function (key, lang) {
-            lang = lang || this.lng;
+            lang = lang || local_lang;
 
             var keyToParse = lang + '.' + key;
 
             // Check for the lang
-            if (this.dico[key]) {
+            if (dico[key]) {
                 return true;
             }
 
             // Check for the key and lang
-            return parse(keyToParse, this.dico) ? true : false;
+            return parse(keyToParse, dico) ? true : false;
         };
 
         this.langs = function () {
             var langs = [];
 
-            for (var i in this.dico) {
+            for (var i in dico) {
                 langs.push(i);
             }
 
             return langs;
         };
 
+        this.getCurrentLang = function () {
+            return local_lang;
+        };
+
+        this.getDico = function () {
+            return dico;
+        };
+
+        this.setLang = function (lang) {
+            local_lang = lang;
+            return local_lang;
+        }
+
         this.get = function (key, data, options, lang) {
-            var lng = lang || this.lng;
+            var lng = lang || local_lang;
 
             if (lang === undefined) {
                 if (typeof data === 'string') {
@@ -177,15 +190,15 @@ define(function (require, exports, module) {
                 }
             }
 
-            var obj = parse(lng + '.' + key, this.dico);
+            var obj = parse(lng + '.' + key, dico);
 
             options = options || {};
 
             if (typeof obj === 'string') {
                 var settings = {
-                    evaluate: options.evaluate || this.evaluate,
-                    interpolate: options.interpolate || this.interpolate,
-                    escape: options.escape || this.escape
+                    evaluate: options.evaluate || evaluate,
+                    interpolate: options.interpolate || interpolate,
+                    escape: options.escape || escape
                 };
 
                 obj = template(obj, settings)(data);

@@ -65,7 +65,23 @@ By default, language is set to `en`.
 
 ```javascript
 
-i18n.lng = 'fr';
+i18n.setLang('fr');
+
+```
+
+### Get current language
+
+```javascript
+
+i18n.getCurrentLang();
+
+```
+
+### Get dictionary
+
+```javascript
+
+i18n.getDico();
 
 ```
 ### Check for availability
@@ -145,4 +161,3 @@ var st = i18n.get('st', data, {
 ```
 
 Will result in `<%=interpolate%>`, `<%evaluate%>` or `<%-escape%>`
-
