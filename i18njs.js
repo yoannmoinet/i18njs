@@ -1,10 +1,13 @@
 if (typeof exports === 'object' && typeof define !== 'function') {
+    'use strict';
+
     var define = function (factory) {
         factory(require, exports, module);
     };
 }
 
 define(function (require, exports, module) {
+    'use strict';
     /*-------------------------------------------*\
     |  TEMPLATE SYSTEM
     |  Based on Underscore's
@@ -12,7 +15,7 @@ define(function (require, exports, module) {
     |  https://github.com/jashkenas/underscore/blob/master/underscore.js#L1388
     \*-------------------------------------------*/
     var noMatch = /(.)^/;
-    var escaper = /\\|'|\r|\n|\u2028|\u2029/g;
+    var escaperRegEx = /\\|'|\r|\n|\u2028|\u2029/g;
     var escapeMap = {
         '&': '&amp;',
         '<': '&lt;',
@@ -42,7 +45,8 @@ define(function (require, exports, module) {
         return function(string) {
             string = string == null ? '' : '' + string;
 
-            return testRegexp.test(string) ? string.replace(replaceRegexp, escaper) : string;
+            return testRegexp.test(string) ?
+                string.replace(replaceRegexp, escaper) : string;
         };
     };
 
@@ -60,20 +64,25 @@ define(function (require, exports, module) {
           (settings.evaluate || noMatch).source
         ].join('|') + '|$', 'g');
 
-        text.replace(matcher, function (match, escape, interpolate, evaluate, offset) {
-            source += text.slice(index, offset).replace(escaper, escapeChar);
-            index = offset + match.length;
+        text.replace(matcher,
+            function (match, escape, interpolate, evaluate, offset) {
+                source += text.slice(index, offset)
+                    .replace(escaperRegEx, escapeChar);
+                index = offset + match.length;
 
-            if (escape) {
-                source += "'+\n((__t=(" + escape + "))==null?'':_.escape(__t))+\n'";
-            } else if (interpolate) {
-                source += "'+\n((__t=(" + interpolate + "))==null?'':__t)+\n'";
-            } else if (evaluate) {
-                source += "';\n" + evaluate + "\n__p+='";
+                if (escape) {
+                    source += "'+\n((__t=(" +
+                        escape + "))==null?'':_.escape(__t))+\n'";
+                } else if (interpolate) {
+                    source += "'+\n((__t=(" +
+                        interpolate + "))==null?'':__t)+\n'";
+                } else if (evaluate) {
+                    source += "';\n" + evaluate + "\n__p+='";
+                }
+
+                return match;
             }
-
-            return match;
-        });
+        );
 
         source += "';\n";
         source = 'with(obj||{}){\n' + source + '}\n';
@@ -113,7 +122,7 @@ define(function (require, exports, module) {
 
     var I18n = function () {
         // PRIVATES
-        var local_lang = 'en';
+        var localLang = 'en';
         var dico = {};
         var defaults = {};
         var evaluate = /\{\{([\s\S]+?)\}\}/g;
@@ -122,6 +131,7 @@ define(function (require, exports, module) {
 
         this.add = function (lang, ns, locales) {
             var i;
+            var obj;
 
             dico[lang] = dico[lang] || {};
 
@@ -142,7 +152,7 @@ define(function (require, exports, module) {
         };
 
         this.has = function (key, lang) {
-            lang = lang || local_lang;
+            lang = lang || localLang;
 
             var keyToParse = lang + '.' + key;
 
@@ -166,7 +176,7 @@ define(function (require, exports, module) {
         };
 
         this.getCurrentLang = function () {
-            return local_lang;
+            return localLang;
         };
 
         this.getDico = function () {
@@ -174,8 +184,8 @@ define(function (require, exports, module) {
         };
 
         this.setLang = function (lang) {
-            local_lang = lang;
-            return local_lang;
+            localLang = lang;
+            return localLang;
         };
 
         this.setDefaults = function (options) {
@@ -183,7 +193,7 @@ define(function (require, exports, module) {
         };
 
         this.get = function (key, data, options, lang) {
-            var lng = lang || local_lang;
+            var lng = lang || localLang;
 
             if (lang === undefined) {
                 if (typeof data === 'string') {
@@ -205,22 +215,22 @@ define(function (require, exports, module) {
                     interpolate: options.interpolate || interpolate,
                     escape: options.escape || escape
                 };
-                var new_datas = {};
-                var defs = defaults[local_lang] || defaults;
+                var newDatas = {};
+                var defs = defaults[localLang] || defaults;
 
                 for (i in defs) {
                     if (defs.hasOwnProperty(i)) {
-                        new_datas[i] = defs[i];
+                        newDatas[i] = defs[i];
                     }
                 }
 
                 for (i in data) {
                     if (data.hasOwnProperty(i)) {
-                        new_datas[i] = data[i];
+                        newDatas[i] = data[i];
                     }
                 }
 
-                obj = template(obj, settings)(new_datas);
+                obj = template(obj, settings)(newDatas);
 
                 return obj;
             } else if (typeof obj === 'object') {

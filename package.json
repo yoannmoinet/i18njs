@@ -4,7 +4,8 @@
   "description": "A simple i18n for Javascript with a templating feature.",
   "main": "i18njs.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine"
+    "test": "./node_modules/.bin/jasmine && npm run-script lint",
+    "lint": "./node_modules/.bin/jscs i18njs.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/yoannmoinet/i18njs",
   "devDependencies": {
-    "jasmine": "^2.2.1"
+    "jasmine": "^2.2.1",
+    "jscs": "^1.13.1"
   }
 }
