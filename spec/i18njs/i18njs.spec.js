@@ -98,4 +98,30 @@ describe('i18njs', function () {
 				'escape': '{{-escape}}'
 			});
 	});
+
+	it('should have defaults', function () {
+		i18n.setDefaults({
+			key: 'default'
+		});
+		expect(i18n.get('ns.inter')).toEqual('default');
+	});
+
+	it('should have localized defaults', function () {
+		i18n.setDefaults({
+			fr: {
+				key: 'default_fr'
+			},
+			en: {
+				key: 'default_en'
+			}
+		});
+		i18n.setLang('en');
+		expect(i18n.get('ns.inter')).toEqual('default_en');
+		i18n.setLang('fr');
+		expect(i18n.get('ns.inter')).toEqual('default_fr');
+	});
+
+	it('should overwrite defaults', function () {
+		expect(i18n.get('ns.inter', {key: 'overwrite'})).toEqual('overwrite');
+	});
 });

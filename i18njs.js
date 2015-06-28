@@ -115,7 +115,7 @@ define(function (require, exports, module) {
         // PRIVATES
         var local_lang = 'en';
         var dico = {};
-        var params = {};
+        var defaults = {};
         var evaluate = /\{\{([\s\S]+?)\}\}/g;
         var interpolate = /\{\{=([\s\S]+?)\}\}/g;
         var escape = /\{\{-([\s\S]+?)\}\}/g;
@@ -176,7 +176,11 @@ define(function (require, exports, module) {
         this.setLang = function (lang) {
             local_lang = lang;
             return local_lang;
-        }
+        };
+
+        this.setDefaults = function (options) {
+            defaults = options || {};
+        };
 
         this.get = function (key, data, options, lang) {
             var lng = lang || local_lang;
@@ -195,13 +199,28 @@ define(function (require, exports, module) {
             options = options || {};
 
             if (typeof obj === 'string') {
+                var i;
                 var settings = {
                     evaluate: options.evaluate || evaluate,
                     interpolate: options.interpolate || interpolate,
                     escape: options.escape || escape
                 };
+                var new_datas = {};
+                var defs = defaults[local_lang] || defaults;
 
-                obj = template(obj, settings)(data);
+                for (i in defs) {
+                    if (defs.hasOwnProperty(i)) {
+                        new_datas[i] = defs[i];
+                    }
+                }
+
+                for (i in data) {
+                    if (data.hasOwnProperty(i)) {
+                        new_datas[i] = data[i];
+                    }
+                }
+
+                obj = template(obj, settings)(new_datas);
 
                 return obj;
             } else if (typeof obj === 'object') {

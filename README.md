@@ -148,7 +148,9 @@ var st = i18n.get('st', data);
 
 ```
 
-You can also change delimeters by passing the third `options` arguments
+### Change delimiters
+
+You can also change delimiters by passing the third `options` arguments
 
 ```javascript
 
@@ -161,3 +163,35 @@ var st = i18n.get('st', data, {
 ```
 
 Will result in `<%=interpolate%>`, `<%evaluate%>` or `<%-escape%>`
+
+### Add default values for templates
+
+If you need to have a special key always replaced by the same value (brand for example),
+you can set it as default.
+
+```javascript
+var defaults = {
+	fr: {
+		key: 'default fr'
+	},
+	en: {
+		key: 'default en'
+	}
+};
+
+i18n.setDefaults(defaults);
+i18n.get('ns.inter')
+//default en
+```
+
+If not needed, you don't have to use localized defaults :
+
+```javascript
+var defaults = {
+	key: 'My Brand'
+};
+
+i18n.setDefaults(defaults);
+i18n.get('ns.inter')
+//My Brand
+```
