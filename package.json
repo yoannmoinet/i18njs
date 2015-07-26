@@ -10,6 +10,7 @@
     "lint": "./node_modules/.bin/jscs i18njs.js",
     "changelog": "./node_modules/.bin/conventional-changelog -i CHANGELOG.md -w -b"
     "test": "mocha",
+    "umd": "umd i18njs i18njs.js i18njs.umd.js",
   },
   "repository": {
     "type": "git",
@@ -31,5 +32,6 @@
     "jscs": "^1.13.1"
     "expect.js": "^0.3.1",
     "mocha": "^2.2.5",
+    "umd": "^3.0.1"
   }
 }
