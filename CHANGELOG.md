@@ -2,12 +2,18 @@
 # 2.0.0 (2015-07-26)
 
 
+### Bug Fixes
+
+* **changelog:** better generation for the changelog ([bc46656](https://github.com/yoannmoinet/i18njs/commit/bc46656))
+
 ### Features
 
 * **build:** use umd ([e1ca77f](https://github.com/yoannmoinet/i18njs/commit/e1ca77f))
 * **changelog:** use next version of conventional-changelog ([5124693](https://github.com/yoannmoinet/i18njs/commit/5124693))
 * **tests:** use mocha instead of jasmine ([9195435](https://github.com/yoannmoinet/i18njs/commit/9195435))
+* add postversion script to auto bump version of bower ([cb309bd](https://github.com/yoannmoinet/i18njs/commit/cb309bd))
 * change filepath for core lib and export to umd by default ([3c3a154](https://github.com/yoannmoinet/i18njs/commit/3c3a154))
+* export minified and uglified version ([4df9902](https://github.com/yoannmoinet/i18njs/commit/4df9902))
 
 
 
