@@ -5,8 +5,7 @@
   "main": "i18njs.js",
   "scripts": {
     "posttest": "npm run-script format && npm run-script lint",
-    "preversion": "npm test",
-    "postversion": "npm run-script changelog",
+    "preversion": "npm test && npm run-script changelog && npm run-script umd && npm run-script uglify",
     "test": "mocha",
     "format": "jscs i18njs.js ./test/i18njs.spec.js",
     "lint": "eslint i18njs.js ./test/i18njs.spec.js",
