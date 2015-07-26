@@ -7,9 +7,9 @@
     "posttest": "npm run-script lint",
     "preversion": "npm test",
     "postversion": "npm run-script changelog",
-    "test": "./node_modules/.bin/jasmine",
     "lint": "./node_modules/.bin/jscs i18njs.js",
     "changelog": "./node_modules/.bin/conventional-changelog -i CHANGELOG.md -w -b"
+    "test": "mocha",
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
   "homepage": "https://github.com/yoannmoinet/i18njs",
   "devDependencies": {
     "conventional-changelog": "0.1.0-alpha.1",
-    "jasmine": "^2.2.1",
     "jscs": "^1.13.1"
+    "expect.js": "^0.3.1",
+    "mocha": "^2.2.5",
   }
 }
