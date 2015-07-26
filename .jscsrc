@@ -1,6 +1,7 @@
 {
     "preset": "google",
     "disallowSpacesInAnonymousFunctionExpression": null,
+    "disallowMultipleVarDecl": "exceptUndefined",
     "validateQuoteMarks": {
         "mark": "'",
         "escape": true

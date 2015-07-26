@@ -4,12 +4,13 @@
   "description": "A simple i18n for Javascript with a templating feature.",
   "main": "i18njs.js",
   "scripts": {
-    "posttest": "npm run-script lint",
+    "posttest": "npm run-script format && npm run-script lint",
     "preversion": "npm test",
     "postversion": "npm run-script changelog",
-    "lint": "./node_modules/.bin/jscs i18njs.js",
     "changelog": "./node_modules/.bin/conventional-changelog -i CHANGELOG.md -w -b"
     "test": "mocha",
+    "format": "jscs i18njs.js ./test/i18njs.spec.js",
+    "lint": "eslint i18njs.js ./test/i18njs.spec.js",
     "umd": "umd i18njs i18njs.js i18njs.umd.js",
   },
   "repository": {
@@ -29,8 +30,9 @@
   "homepage": "https://github.com/yoannmoinet/i18njs",
   "devDependencies": {
     "conventional-changelog": "0.1.0-alpha.1",
-    "jscs": "^1.13.1"
+    "eslint": "^0.24.1",
     "expect.js": "^0.3.1",
+    "jscs": "^1.13.1",
     "mocha": "^2.2.5",
     "umd": "^3.0.1"
   }
