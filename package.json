@@ -7,11 +7,11 @@
     "posttest": "npm run-script format && npm run-script lint",
     "preversion": "npm test",
     "postversion": "npm run-script changelog",
-    "changelog": "./node_modules/.bin/conventional-changelog -i CHANGELOG.md -w -b"
     "test": "mocha",
     "format": "jscs i18njs.js ./test/i18njs.spec.js",
     "lint": "eslint i18njs.js ./test/i18njs.spec.js",
     "umd": "umd i18njs ./src/i18n.js i18njs.js",
+    "changelog": "node ./src/changelog.js",
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/yoannmoinet/i18njs",
   "devDependencies": {
-    "conventional-changelog": "0.1.0-alpha.1",
+    "conventional-changelog": "0.2.1",
     "eslint": "^0.24.1",
     "expect.js": "^0.3.1",
     "jscs": "^1.13.1",
