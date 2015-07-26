@@ -11,7 +11,7 @@
     "test": "mocha",
     "format": "jscs i18njs.js ./test/i18njs.spec.js",
     "lint": "eslint i18njs.js ./test/i18njs.spec.js",
-    "umd": "umd i18njs i18njs.js i18njs.umd.js",
+    "umd": "umd i18njs ./src/i18n.js i18njs.js",
   },
   "repository": {
     "type": "git",

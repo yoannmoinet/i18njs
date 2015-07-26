@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.i18njs = f()}})(function(){var define,module,exports;
+/*eslint no-new-func:0*/
 'use strict';
 /*-------------------------------------------*\
 |  TEMPLATE SYSTEM
@@ -17,10 +17,10 @@ var escapeMap = {
     '`': '&#x60;'
 };
 var escapes = {
-    "'":      "'",
-    '\\':     '\\',
-    '\r':     'r',
-    '\n':     'n',
+    "'": "'",
+    '\\': '\\',
+    '\r': 'r',
+    '\n': 'n',
     '\u2028': 'u2028',
     '\u2029': 'u2029'
 };
@@ -90,15 +90,15 @@ var template = function (text, settings) {
         throw e;
     }
 
-    var template = function (data) {
+    var tmpl = function (data) {
         return render.call(this, data, {
             escape: createEscaper(escapeMap)
         });
     };
 
-    template.source = 'function(obj){\n' + source + '}';
+    tmpl.source = 'function(obj){\n' + source + '}';
 
-    return template;
+    return tmpl;
 };
 /*---- END TEMPLATE ----*/
 
@@ -236,5 +236,3 @@ var I18n = function () {
 module.exports = new I18n();
 
 return module.exports;
-
-});
