@@ -8,8 +8,8 @@
     "preversion": "npm test && npm run-script changelog && npm run-script umd && npm run-script uglify",
     "postversion": "node ./src/postversion.js",
     "test": "mocha",
-    "format": "jscs i18njs.js ./test/i18njs.spec.js",
-    "lint": "eslint i18njs.js ./test/i18njs.spec.js",
+    "format": "jscs ./src/i18n.js ./test/i18njs.spec.js",
+    "lint": "eslint ./src/i18n.js ./test/i18njs.spec.js",
     "umd": "umd i18njs ./src/i18n.js i18njs.js",
     "changelog": "node ./src/changelog.js",
     "uglify": "uglifyjs i18njs.js -o i18njs.min.js -c -m"
