@@ -12,6 +12,7 @@
     "lint": "eslint i18njs.js ./test/i18njs.spec.js",
     "umd": "umd i18njs ./src/i18n.js i18njs.js",
     "changelog": "node ./src/changelog.js",
+    "uglify": "uglifyjs i18njs.js -o i18njs.min.js -c -m"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "expect.js": "^0.3.1",
     "jscs": "^1.13.1",
     "mocha": "^2.2.5",
+    "uglify-js": "^2.4.24",
     "umd": "^3.0.1"
   }
 }
