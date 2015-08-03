@@ -234,8 +234,6 @@ var I18n = function () {
     };
 };
 
-module.exports = new I18n();
-
-return module.exports;
+return new I18n();
 
 });
