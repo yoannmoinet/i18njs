@@ -10,11 +10,13 @@ conventionalChangelog({
 	to: 'HEAD'
 }).pipe(changelogFile);
 
-console.log('commiting changes to CHANGELOG.md');
-exec('git add CHANGELOG.md && git commit -m "docs: changelog"', function (err) {
-	if (!err) {
-		process.exit(0);
-	}
-	console.error(err);
-	process.exit(1);
+changelogFile.on('unpipe', function (src) {
+	console.log('commiting changes to CHANGELOG.md');
+	exec('git add CHANGELOG.md && git commit -m "docs: changelog"', function (err) {
+		if (!err) {
+			process.exit(0);
+		}
+		console.error(err);
+		process.exit(1);
+	});
 });
