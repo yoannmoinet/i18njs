@@ -4,6 +4,7 @@
   "description": "A simple i18n for Javascript with a templating feature.",
   "main": "i18njs.js",
   "scripts": {
+    "postinstall": "npm run-script umd && npm run-script uglify",
     "posttest": "npm run-script format && npm run-script lint",
     "preversion": "npm run-script build",
     "postversion": "node ./src/postversion.js",
