@@ -21,10 +21,12 @@ fs.writeFile('bower.json', JSON.stringify(bower, null, 2), function (err) {
 					return;
 				}
 				console.error(err);
+				process.exit(1);
 			});
 			return;
 		}
 		console.error(err);
+		process.exit(1);
 	});
 });
 
@@ -35,9 +37,9 @@ function execCommand (cmd, cb) {
 }
 
 function commitChangelog (cb) {
-	execCommand('git add CHANGELOG.md && git commit -m "docs: changelog"', cb);
+	execCommand('git add ../CHANGELOG.md && git commit -m "docs: changelog"', cb);
 }
 
 function commitBower (cb) {
-	execCommand('git add bower.json && git commit -m "chore: bower bump"', cb);
+	execCommand('git add ../bower.json && git commit -m "chore: bower bump"', cb);
 }
