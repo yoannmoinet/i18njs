@@ -1,15 +1,3 @@
-<a name="2.0.3"></a>
-## 2.0.3 (2015-08-03)
-
-
-
-
-<a name="2.0.3"></a>
-## 2.0.3 (2015-08-03)
-
-
-
-
 <a name="2.0.2"></a>
 ## 2.0.2 (2015-08-03)
 
@@ -121,12 +109,6 @@
 ### Bug Fixes
 
 * update commonjs and amd support ([7005923](https://github.com/yoannmoinet/i18njs/commit/7005923))
-
-
-
-<a name="1.0.1"></a>
-## 1.0.1 (2015-04-06)
-
 
 
 
