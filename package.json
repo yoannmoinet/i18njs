@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm run-script umd && npm run-script uglify",
     "preversion": "npm run-script build",
-    "postversion": "npm run-script changelog && node ../src/postversion.js",
+    "postversion": "npm run-script changelog && npm run-script runPostVersion",
     "build": "npm test",
     "pretest": "npm run-script umd && npm run-script uglify",
     "test": "mocha",
@@ -15,6 +15,7 @@
     "lint": "eslint ./src/i18n.js ./test/i18njs.spec.js",
     "umd": "umd i18njs ./src/i18n.js i18njs.js",
     "changelog": "node ./src/changelog.js",
+    "runPostVersion": "node ./src/postversion.js",
     "uglify": "uglifyjs i18njs.js -o i18njs.min.js -c -m"
   },
   "repository": {
