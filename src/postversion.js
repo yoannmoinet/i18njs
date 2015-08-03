@@ -12,7 +12,7 @@ fs.writeFile('bower.json', JSON.stringify(bower, null, 2), function (err) {
 	}
 	console.log('bower.json updated to ' + bower.version);
 	console.log('commiting changes to bower.json');
-	exec('git add ../bower.json && git commit -m "chore: bower bump"', function (err) {
+	exec('git add bower.json && git commit -m "chore: bower bump"', function (err) {
 		if (!err) {
 			process.exit(0);
 		}
