@@ -6,8 +6,8 @@
   "scripts": {
     "postinstall": "npm run-script umd && npm run-script uglify",
     "preversion": "npm run-script build",
-    "postversion": "node ./src/postversion.js",
-    "build": "npm test && npm run-script changelog",
+    "postversion": "npm run-script changelog && node ./src/postversion.js",
+    "build": "npm test",
     "pretest": "npm run-script umd && npm run-script uglify",
     "test": "mocha",
     "posttest": "npm run-script format && npm run-script lint",
