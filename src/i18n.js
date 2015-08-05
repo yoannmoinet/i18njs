@@ -200,7 +200,7 @@ var I18n = function () {
 
         options = options || {};
 
-        if (typeof obj === 'string') {
+        if (typeof obj === 'string' || typeof obj === 'function') {
             var i;
             var settings = {
                 evaluate: options.evaluate || evaluate,
@@ -222,10 +222,12 @@ var I18n = function () {
                 }
             }
 
-            obj = template(obj, settings)(newDatas);
+            if (typeof obj !== 'function') {
+                obj = template(obj, settings);
+            }
 
-            return obj;
-        } else if (typeof obj === 'object') {
+            return obj(newDatas);
+        } else  if (typeof obj === 'object') {
             return obj;
         }
 
