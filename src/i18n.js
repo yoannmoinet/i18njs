@@ -227,7 +227,7 @@ var I18n = function () {
             }
 
             return obj(newDatas);
-        } else  if (typeof obj === 'object') {
+        } else if (typeof obj === 'object') {
             return obj;
         }
 
