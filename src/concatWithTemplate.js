@@ -1,0 +1,2 @@
+/*globals template*/
+return template;
