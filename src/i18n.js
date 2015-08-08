@@ -1,5 +1,6 @@
 /*globals template*/
 var parse = function (key, obj) {
+    'use strict';
     var ar = key.split('.');
 
     while (obj && ar.length) {
@@ -10,6 +11,7 @@ var parse = function (key, obj) {
 };
 
 var I18n = function () {
+    'use strict';
     // PRIVATES
     var localLang = 'en';
     var dico = {};

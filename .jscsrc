@@ -7,6 +7,5 @@
         "escape": true
     },
     "validateIndentation": 4,
-    "maxErrors": 10,
     "excludeFiles": ["node_modules/**"]
 }
