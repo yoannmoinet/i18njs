@@ -1,3 +1,30 @@
+<a name="2.0.4"></a>
+## 2.0.4 (2015-08-08)
+
+
+
+
+<a name="2.0.4"></a>
+## 2.0.4 (2015-08-08)
+
+
+### Bug Fixes
+
+* check for `template` before using it ([b9292a2](https://github.com/yoannmoinet/i18njs/commit/b9292a2))
+* jscs ([562ec71](https://github.com/yoannmoinet/i18njs/commit/562ec71))
+
+### Features
+
+* add pre-compiled template support ([83c8925](https://github.com/yoannmoinet/i18njs/commit/83c8925))
+
+
+
+<a name="2.0.3"></a>
+## 2.0.3 (2015-08-03)
+
+
+
+
 <a name="2.0.2"></a>
 ## 2.0.2 (2015-08-03)
 
@@ -38,10 +65,10 @@
 
 ### Features
 
-* add Travis CI ([988fc16](https://github.com/yoannmoinet/i18njs/commit/988fc16))
 * add changelog ([45a3ccd](https://github.com/yoannmoinet/i18njs/commit/45a3ccd))
 * add defaults template values ([3601034](https://github.com/yoannmoinet/i18njs/commit/3601034))
 * add linting ([b9de51a](https://github.com/yoannmoinet/i18njs/commit/b9de51a))
+* add Travis CI ([988fc16](https://github.com/yoannmoinet/i18njs/commit/988fc16))
 * **npm:** add scripts ([4b6b378](https://github.com/yoannmoinet/i18njs/commit/4b6b378))
 
 
@@ -109,6 +136,12 @@
 ### Bug Fixes
 
 * update commonjs and amd support ([7005923](https://github.com/yoannmoinet/i18njs/commit/7005923))
+
+
+
+<a name="1.0.1"></a>
+## 1.0.1 (2015-04-06)
+
 
 
 
