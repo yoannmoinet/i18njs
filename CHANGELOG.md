@@ -1,6 +1,16 @@
-<a name="2.0.4"></a>
-## 2.0.4 (2015-08-08)
+<a name="2.0.5"></a>
+## 2.0.5 (2015-08-08)
 
+
+
+
+<a name="2.0.5"></a>
+## 2.0.5 (2015-08-08)
+
+
+### Features
+
+* export template into its own script ([ac34590](https://github.com/yoannmoinet/i18njs/commit/ac34590))
 
 
 
