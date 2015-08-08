@@ -121,7 +121,7 @@ var I18n = function () {
                 }
             }
 
-            if (typeof obj !== 'function') {
+            if (typeof obj !== 'function' && typeof template === 'function') {
                 obj = template(obj, settings);
             }
 
