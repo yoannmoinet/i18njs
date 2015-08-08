@@ -1,12 +1,4 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.i18njs = f()}})(function(){var define,module,exports;
-/*eslint no-new-func:0*/
-'use strict';
-/*-------------------------------------------*\
-|  TEMPLATE SYSTEM
-|  Based on Underscore's
-|  template system.
-|  https://github.com/jashkenas/underscore/blob/master/underscore.js#L1388
-\*-------------------------------------------*/
 var noMatch = /(.)^/;
 var escaperRegEx = /\\|'|\r|\n|\u2028|\u2029/g;
 var escapeMap = {
@@ -26,7 +18,8 @@ var escapes = {
     '\u2029': 'u2029'
 };
 
-var createEscaper = function(map) {
+var createEscaper = function (map) {
+    'use strict';
     var escaper = function(match) {
         return map[match];
     };
@@ -43,11 +36,13 @@ var createEscaper = function(map) {
     };
 };
 
-var escapeChar = function(match) {
+var escapeChar = function (match) {
+    'use strict';
     return '\\' + escapes[match];
 };
 
 var template = function (text, settings) {
+    'use strict';
     var index = 0;
     var source = "__p+='";
 
@@ -101,9 +96,9 @@ var template = function (text, settings) {
 
     return tmpl;
 };
-/*---- END TEMPLATE ----*/
-
+/*globals template*/
 var parse = function (key, obj) {
+    'use strict';
     var ar = key.split('.');
 
     while (obj && ar.length) {
@@ -114,6 +109,7 @@ var parse = function (key, obj) {
 };
 
 var I18n = function () {
+    'use strict';
     // PRIVATES
     var localLang = 'en';
     var dico = {};
@@ -201,7 +197,7 @@ var I18n = function () {
 
         options = options || {};
 
-        if (typeof obj === 'string') {
+        if (typeof obj === 'string' || typeof obj === 'function') {
             var i;
             var settings = {
                 evaluate: options.evaluate || evaluate,
@@ -223,9 +219,11 @@ var I18n = function () {
                 }
             }
 
-            obj = template(obj, settings)(newDatas);
+            if (typeof obj !== 'function' && typeof template === 'function') {
+                obj = template(obj, settings);
+            }
 
-            return obj;
+            return obj(newDatas);
         } else if (typeof obj === 'object') {
             return obj;
         }
