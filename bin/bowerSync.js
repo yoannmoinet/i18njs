@@ -7,16 +7,17 @@ var exec = require('child_process').exec;
 bower.version = pkg.version;
 
 fs.writeFile('bower.json', JSON.stringify(bower, null, 2), function (err) {
-	if (err) {
-		return console.error(err);
-	}
-	console.log('bower.json updated to ' + bower.version);
-	console.log('commiting changes to bower.json');
-	exec('git add bower.json && git commit -m "chore: bower bump"', function (err) {
-		if (!err) {
-			process.exit(0);
-		}
-		console.error(err);
-		process.exit(1);
-	});
+    'use strict';
+    if (err) {
+        return console.error(err);
+    }
+    console.log('bower.json updated to ' + bower.version);
+    console.log('commiting changes to bower.json');
+    exec('git add bower.json && git commit -m "chore: bower bump"', function (err) {
+        if (!err) {
+            process.exit(0);
+        }
+        console.error(err);
+        process.exit(1);
+    });
 });
