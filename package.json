@@ -15,7 +15,7 @@
     "concat": "concat-cli -f ./src/template.js ./src/i18n.js -o ./temp/i18njs.js",
     "concatTemplate": "concat-cli -f ./src/template.js ./src/concatWithTemplate.js -o ./temp/template.js",
     "umd": "umd i18njs ./temp/i18njs.js ./i18njs.js",
-    "umdTemplate": "umd templateI18N ./temp/template.js ./bin/template-i18njs.js",
+    "umdTemplate": "umd templateI18N ./temp/template.js ./bin/templateI18njs.js",
     "changelog": "node ./bin/changelog.js",
     "bowerSync": "node ./bin/bowerSync.js",
     "cleanTemp": "node ./bin/cleanTemp.js",
