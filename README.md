@@ -41,17 +41,17 @@ After importing it `var i18n = require('i18njs');`
 ```javascript
 
 var en_locales = {
-	'hello_world': {
-		'hello': 'Hello',
-		'world': 'World'
-	}
+    'hello_world': {
+        'hello': 'Hello',
+        'world': 'World'
+    }
 };
 
 var fr_locales = {
-	'hello_world': {
-		'hello': 'Bonjour',
-		'world': 'Monde'
-	}
+    'hello_world': {
+        'hello': 'Bonjour',
+        'world': 'Monde'
+    }
 };
 
 // i18n.add(language, [namespace,] locales);
@@ -134,12 +134,12 @@ It works in the form of `{{=interpolate}}`, `{{evaluate}}` or `{{-escape}}` :
 ```javascript
 
 var en_locales = {
-	'st': '{{=interpolate}} {{for(var i = 0, max = 1; i < max; i += 1) {}}to{{}}} {{-escape}}'
+    'st': '{{=interpolate}} {{for(var i = 0, max = 1; i < max; i += 1) {}}to{{}}} {{-escape}}'
 };
 
 var data = {
-	'interpolate': 'Hello',
-	'escape': '\'<the>\' `&` "World"'
+    'interpolate': 'Hello',
+    'escape': '\'<the>\' `&` "World"'
 };
 
 i18n.add('en', en_locales);
@@ -156,7 +156,7 @@ You can also change delimiters by passing the third `options` arguments
 ```javascript
 
 var st = i18n.get('st', data, {
-	evaluate: /<%([\s\S]+?)%>/g;
+    evaluate: /<%([\s\S]+?)%>/g;
     interpolate: /<%=([\s\S]+?)%>/g;
     escape: /<%-([\s\S]+?)%>/g;
 });
@@ -172,12 +172,12 @@ you can set it as default.
 
 ```javascript
 var defaults = {
-	fr: {
-		key: 'default fr'
-	},
-	en: {
-		key: 'default en'
-	}
+    fr: {
+        key: 'default fr'
+    },
+    en: {
+        key: 'default en'
+    }
 };
 
 i18n.setDefaults(defaults);
@@ -189,7 +189,7 @@ If not needed, you don't have to use localized defaults :
 
 ```javascript
 var defaults = {
-	key: 'My Brand'
+    key: 'My Brand'
 };
 
 i18n.setDefaults(defaults);
