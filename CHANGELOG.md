@@ -1,6 +1,18 @@
-<a name="2.0.5"></a>
-## 2.0.5 (2015-08-08)
+<a name="2.0.6"></a>
+## 2.0.6 (2015-08-09)
 
+
+
+
+<a name="2.0.6"></a>
+## 2.0.6 (2015-08-09)
+
+
+### Bug Fixes
+
+* indent with spaces like everywhere else ([ce66e3c](https://github.com/yoannmoinet/i18njs/commit/ce66e3c))
+* use concat-cli without windows-style new lines ([b9b8c31](https://github.com/yoannmoinet/i18njs/commit/b9b8c31))
+* use unix new-lines ([bb985c2](https://github.com/yoannmoinet/i18njs/commit/bb985c2))
 
 
 
