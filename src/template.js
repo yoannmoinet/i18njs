@@ -91,7 +91,15 @@ var template = function (text, settings) {
         });
     };
 
-    tmpl.source = 'function(obj){\n' + source + '}';
+    // Create the source as a string
+    // to be able to write it in the requirejs plugin
+    tmpl.source = 'function (data) {\n    return ' +
+        render.toString() +
+    '.call(this, data, {\n    escape:' +
+        createEscaper.toString() +
+    '.call(this, { \'&\': \'&amp;\', \'<\': \'&lt;\', \'>\': \'&gt;\',' +
+        '\'"\': \'&quot;\', "\'": \'&#x27;\',\'`\': \'&#x60;\'}' +
+    ')})}';
 
     return tmpl;
 };
