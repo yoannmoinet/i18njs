@@ -1,36 +1,42 @@
 # i18njs
 
-A simple i18n for Javascript with a templating feature.
+> A simple i18n for Javascript with a templating feature.
 
 [![npm version](https://img.shields.io/npm/v/i18njs.svg?style=flat)](http://badge.fury.io/js/i18njs)
 [![bower version](https://img.shields.io/bower/v/i18njs.svg?style=flat)](http://bower.io/search/?q=i18njs)
 [![travis](https://travis-ci.org/yoannmoinet/i18njs.svg)](https://travis-ci.org/yoannmoinet/i18njs)
+
+- - - 
+
+## Usage with RequireJS
+
+To use with **[RequireJS](http://requirejs.org)** I'd advise to also use the plugin 
+[requirejs-i18njs](https://github.com/yoannmoinet/requirejs-i18njs) to be able to precompile the templates
+that are in your translation files for your production code.
+
+----
 
 ## Installation
 
 Either
 
 ```node
-
 npm install --save i18njs
-
 ```
 
 or
 
 ```node
-
 bower install --save i18njs
-
 ```
+----
 
 ## Test
 
 ```node
-
 npm test
-
 ```
+----
 
 ## Usage
 
@@ -171,28 +177,41 @@ If you need to have a special key always replaced by the same value (brand for e
 you can set it as default.
 
 ```javascript
+var fr = {
+    welcome: 'Bienvenue sur {{=brand}}'
+};
+
+var en = {
+    welcome: 'Welcome to {{=brand}}'
+};
+
 var defaults = {
     fr: {
-        key: 'default fr'
+        brand: 'Ma Marque'
     },
     en: {
-        key: 'default en'
+        brand: 'My Brand'
     }
 };
 
+i18n.add('fr', fr);
+i18n.add('en', en);
 i18n.setDefaults(defaults);
-i18n.get('ns.inter')
-//default en
+
+i18n.get('welcome')
+//Welcome to My Brand
 ```
 
 If not needed, you don't have to use localized defaults :
 
 ```javascript
 var defaults = {
-    key: 'My Brand'
+    brand: 'My Brand'
 };
 
 i18n.setDefaults(defaults);
-i18n.get('ns.inter')
-//My Brand
+i18n.setLang('fr');
+
+i18n.get('welcome');
+//Bienvenue sur My Brand
 ```
