@@ -1,6 +1,6 @@
 describe('i18njs', function () {
     'use strict';
-    var i18n = require('../i18njs.js');
+    var i18n = require('../dist/i18njs.js');
     var expect = require('expect.js');
     var frLocales, enLocales;
 

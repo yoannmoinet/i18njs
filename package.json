@@ -2,7 +2,7 @@
   "name": "i18njs",
   "version": "2.0.7",
   "description": "A simple i18n for Javascript with a templating feature.",
-  "main": "i18njs.js",
+  "main": "dist/i18njs.js",
   "scripts": {
     "preversion": "npm run-script build",
     "postversion": "npm run-script bowerSync && npm run-script changelog",
@@ -14,13 +14,13 @@
     "lint": "eslint ./src/i18n.js ./test/i18njs.spec.js",
     "concat": "concat-cli -f ./src/template.js ./src/i18n.js -o ./temp/i18njs.js",
     "concatTemplate": "concat-cli -f ./src/template.js ./src/concatWithTemplate.js -o ./temp/template.js",
-    "umd": "umd i18njs ./temp/i18njs.js ./i18njs.js",
+    "umd": "umd i18njs ./temp/i18njs.js ./dist/i18njs.js",
     "umdTemplate": "umd templateI18N ./temp/template.js ./bin/templateI18njs.js",
     "changelog": "node ./bin/changelog.js",
     "bowerSync": "node ./bin/bowerSync.js",
     "cleanTemp": "node ./bin/cleanTemp.js",
     "addTemp": "node ./bin/addTemp.js",
-    "uglify": "uglifyjs i18njs.js -o i18njs.min.js -c -m"
+    "uglify": "uglifyjs ./dist/i18njs.js -o ./dist/i18njs.min.js -c -m"
   },
   "repository": {
     "type": "git",
