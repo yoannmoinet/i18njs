@@ -1,6 +1,16 @@
-<a name="2.0.6"></a>
-## 2.0.6 (2015-08-09)
+<a name="2.0.7"></a>
+## 2.0.7 (2015-08-09)
 
+
+
+
+<a name="2.0.7"></a>
+## 2.0.7 (2015-08-09)
+
+
+### Bug Fixes
+
+* **template:** export the template's source as a string ([3496399](https://github.com/yoannmoinet/i18njs/commit/3496399))
 
 
 
