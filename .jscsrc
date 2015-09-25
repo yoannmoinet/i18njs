@@ -1,6 +1,8 @@
 {
     "preset": "google",
     "disallowSpacesInAnonymousFunctionExpression": null,
+    "disallowSpacesInFunctionExpression": null,
+    "disallowSpacesInFunctionDeclaration": null,
     "disallowMultipleVarDecl": "exceptUndefined",
     "validateQuoteMarks": {
         "mark": "'",
