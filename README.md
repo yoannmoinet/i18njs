@@ -1,18 +1,40 @@
-# i18njs
+![logo](./dist/logo.png)
+-----
 
-> A simple i18n for Javascript with a templating feature.
+> Simplistic I18N tool for universal/isomorphic Javascript.
 
 [![npm version](https://img.shields.io/npm/v/i18njs.svg?style=flat)](http://badge.fury.io/js/i18njs)
 [![bower version](https://img.shields.io/bower/v/i18njs.svg?style=flat)](http://bower.io/search/?q=i18njs)
 [![travis](https://travis-ci.org/yoannmoinet/i18njs.svg)](https://travis-ci.org/yoannmoinet/i18njs)
 
-- - - 
+----
 
 ## Usage with RequireJS
 
-To use with **[RequireJS](http://requirejs.org)** I'd advise to also use the plugin 
+To use with **[RequireJS](http://requirejs.org)** I'd advise to also use the plugin
 [requirejs-i18njs](https://github.com/yoannmoinet/requirejs-i18njs) to be able to precompile the templates
 that are in your translation files for your production code.
+
+----
+
+## Usage with Handlebars
+
+You can register your helper simply by using the `.get()` function of i18njs
+
+```javascript
+Handlebars.registerHelper('i18n',
+    function () {
+        return i18njs.get.apply(i18njs, arguments);
+    }
+);
+```
+
+then in your templates :
+
+```javascript
+// Arguments after the 'key' are optionals
+{{i18n 'key' data options lang}}
+```
 
 ----
 
@@ -31,18 +53,35 @@ bower install --save i18njs
 ```
 ----
 
-## Test
-
-```node
-npm test
-```
-----
-
 ## Usage
 
-After importing it `var i18n = require('i18njs');`
+Import it the way you want into your project :
+
+```javascript
+// CommonJS
+var i18njs = require('i18njs');
+```
+
+```javascript
+// AMD
+define(['i18njs'], function (i18njs) {
+    // use i18njs
+});
+```
+
+```html
+// Global
+<script type="text/javascript" src="./dist/i18njs.min.js"></script>
+<script type="text/javascript">
+    // use i18njs
+</script>
+```
 
 ### Add locales
+
+Your localized strings are simple json objects.
+
+Namespaces can be as deep as you need.
 
 ```javascript
 
@@ -61,8 +100,8 @@ var fr_locales = {
 };
 
 // i18n.add(language, [namespace,] locales);
-i18n.add('en', 'first_test', en_locales);
-i18n.add('fr', 'first_test', fr_locales);
+i18n.add('en', 'first_level_namespace', en_locales);
+i18n.add('fr', 'first_level_namespace', fr_locales);
 
 ```
 
@@ -99,14 +138,23 @@ You can check only the language too.
 
  ```javascript
  // i18n.has([key,] lang)
- i18n.has('first_test.hello_world.hello', 'en');
+ i18n.has('first_level_namespace.hello_world.hello', 'en');
  // true
 
- i18n.has('first_test.hello_world.hello');
+ i18n.has('first_level_namespace.hello_world.hello');
  // true
 
  i18n.has('en');
  // true
+
+  i18n.has('de');
+  // false
+
+  i18n.has('hello_world.bye', 'en');
+  // false
+
+  i18n.has('test');
+  // false
  ```
 
 ### List available languages
@@ -123,10 +171,10 @@ i18n.listLangs();
 ```javascript
 
 // i18n.get(key[, data, options][, lang]);
-i18n.get('first_test.hello_world.hello');
+i18n.get('first_level_namespace.hello_world.hello');
 // Hello
 
-i18n.get('first_test.hello_world.hello', 'fr');
+i18n.get('first_level_namespace.hello_world.hello', 'fr');
 // Bonjour
 
 ```
@@ -138,20 +186,23 @@ It uses a basic templating engine, the same as [underscore](http://underscorejs.
 It works in the form of `{{=interpolate}}`, `{{evaluate}}` or `{{-escape}}` :
 
 ```javascript
-
+// localized strings
 var en_locales = {
-    'st': '{{=interpolate}} {{for(var i = 0, max = 1; i < max; i += 1) {}}to{{}}} {{-escape}}'
+    'st': '{{=interpolate}}{{for(var i = 0, max = 5; i < max; i += 1) {}} to{{}}} {{-escape}}'
 };
 
+// context used in the templated string
 var data = {
     'interpolate': 'Hello',
     'escape': '\'<the>\' `&` "World"'
 };
 
+// register the localized string
 i18n.add('en', en_locales);
 
+// give it a context with the data object
 var st = i18n.get('st', data);
-// "Hello  to  &#x27;&lt;the&gt;&#x27; &#x60;&amp;&#x60; &quot;World&quot;"
+// "Hello  to to to to to &#x27;&lt;the&gt;&#x27; &#x60;&amp;&#x60; &quot;World&quot;"
 
 ```
 
@@ -169,12 +220,15 @@ var st = i18n.get('st', data, {
 
 ```
 
-Will result in `<%=interpolate%>`, `<%evaluate%>` or `<%-escape%>`
+Will result in these delimiters `<%=interpolate%>`, `<%evaluate%>` or `<%-escape%>`
 
 ### Add default values for templates
 
-If you need to have a special key always replaced by the same value (brand for example),
-you can set it as default.
+If you need to have a special key always replaced by the same value (a brand for example),
+you can set it as a **default**.
+
+This `key` will be then replaced across your application's localized strings and you
+won't need to pass it as a context object to your `.get()`.
 
 ```javascript
 var fr = {
@@ -202,7 +256,7 @@ i18n.get('welcome')
 //Welcome to My Brand
 ```
 
-If not needed, you don't have to use localized defaults :
+You don't have to use localized defaults if you don't need to :
 
 ```javascript
 var defaults = {
