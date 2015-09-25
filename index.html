@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>I18njs by yoannmoinet</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>I18njs</h1>
+        <p>Simplistic I18N tool for universal/isomorphic Javascript.</p>
+
+        <p class="view"><a href="https://github.com/yoannmoinet/i18njs">View the Project on GitHub <small>yoannmoinet/i18njs</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/yoannmoinet/i18njs/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/yoannmoinet/i18njs/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/yoannmoinet/i18njs">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
+<a id="usage-with-requirejs" class="anchor" href="#usage-with-requirejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage with RequireJS</h2>
+
+<p>To use with <strong><a href="http://requirejs.org">RequireJS</a></strong> I'd advise to also use the plugin
+<a href="https://github.com/yoannmoinet/requirejs-i18njs">requirejs-i18njs</a> to be able to precompile the templates
+that are in your translation files for your production code.</p>
+
+<hr>
+
+<h2>
+<a id="usage-with-handlebars" class="anchor" href="#usage-with-handlebars" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage with Handlebars</h2>
+
+<p>You can register your helper simply by using the <code>.get()</code> function of i18njs</p>
+
+<div class="highlight highlight-source-js"><pre>Handlebars.registerHelper(<span class="pl-s"><span class="pl-pds">'</span>i18n<span class="pl-pds">'</span></span>,
+    <span class="pl-k">function</span> () {
+        <span class="pl-k">return</span> i18njs.get.<span class="pl-c1">apply</span>(i18njs, arguments);
+    }
+);</pre></div>
+
+<p>then in your templates :</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// Arguments after the 'key' are optionals</span>
+{{i18n <span class="pl-s"><span class="pl-pds">'</span>key<span class="pl-pds">'</span></span> data options lang}}</pre></div>
+
+<hr>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Either</p>
+
+<div class="highlight highlight-source-js"><pre>npm install <span class="pl-k">--</span>save i18njs</pre></div>
+
+<p>or</p>
+
+<div class="highlight highlight-source-js"><pre>bower install <span class="pl-k">--</span>save i18njs</pre></div>
+
+<hr>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Import it the way you want into your project :</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// CommonJS</span>
+<span class="pl-k">var</span> i18njs <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>i18njs<span class="pl-pds">'</span></span>);</pre></div>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// AMD</span>
+define([<span class="pl-s"><span class="pl-pds">'</span>i18njs<span class="pl-pds">'</span></span>], <span class="pl-k">function</span> (<span class="pl-smi">i18njs</span>) {
+    <span class="pl-c">// use i18njs</span>
+});</pre></div>
+
+<div class="highlight highlight-text-html-basic"><pre>// Global
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>./dist/i18njs.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+<span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s1">    <span class="pl-c">// use i18njs</span></span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<h3>
+<a id="add-locales" class="anchor" href="#add-locales" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add locales</h3>
+
+<p>Your localized strings are simple json objects.</p>
+
+<p>Namespaces can be as deep as you need.</p>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">var</span> en_locales <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">'</span>hello_world<span class="pl-pds">'</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Hello<span class="pl-pds">'</span></span>,
+        <span class="pl-s"><span class="pl-pds">'</span>world<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>World<span class="pl-pds">'</span></span>
+    }
+};
+
+<span class="pl-k">var</span> fr_locales <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">'</span>hello_world<span class="pl-pds">'</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Bonjour<span class="pl-pds">'</span></span>,
+        <span class="pl-s"><span class="pl-pds">'</span>world<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Monde<span class="pl-pds">'</span></span>
+    }
+};
+
+<span class="pl-c">// i18n.add(language, [namespace,] locales);</span>
+i18n.<span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>first_level_namespace<span class="pl-pds">'</span></span>, en_locales);
+i18n.<span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">'</span>fr<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>first_level_namespace<span class="pl-pds">'</span></span>, fr_locales);
+</pre></div>
+
+<h3>
+<a id="change-language" class="anchor" href="#change-language" aria-hidden="true"><span class="octicon octicon-link"></span></a>Change language</h3>
+
+<p>By default, language is set to <code>en</code>.</p>
+
+<div class="highlight highlight-source-js"><pre>
+i18n.setLang(<span class="pl-s"><span class="pl-pds">'</span>fr<span class="pl-pds">'</span></span>);
+</pre></div>
+
+<h3>
+<a id="get-current-language" class="anchor" href="#get-current-language" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get current language</h3>
+
+<div class="highlight highlight-source-js"><pre>
+i18n.getCurrentLang();
+</pre></div>
+
+<h3>
+<a id="get-dictionary" class="anchor" href="#get-dictionary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get dictionary</h3>
+
+<div class="highlight highlight-source-js"><pre>
+i18n.getDico();
+</pre></div>
+
+<h3>
+<a id="check-for-availability" class="anchor" href="#check-for-availability" aria-hidden="true"><span class="octicon octicon-link"></span></a>Check for availability</h3>
+
+<p>If needed, you can also check for the presence of a specific localized string in a particular language.</p>
+
+<p>You can check only the language too.</p>
+
+<div class="highlight highlight-source-js"><pre> <span class="pl-c">// i18n.has([key,] lang)</span>
+ i18n.has(<span class="pl-s"><span class="pl-pds">'</span>first_level_namespace.hello_world.hello<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>);
+ <span class="pl-c">// true</span>
+
+ i18n.has(<span class="pl-s"><span class="pl-pds">'</span>first_level_namespace.hello_world.hello<span class="pl-pds">'</span></span>);
+ <span class="pl-c">// true</span>
+
+ i18n.has(<span class="pl-s"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>);
+ <span class="pl-c">// true</span>
+
+  i18n.has(<span class="pl-s"><span class="pl-pds">'</span>de<span class="pl-pds">'</span></span>);
+  <span class="pl-c">// false</span>
+
+  i18n.has(<span class="pl-s"><span class="pl-pds">'</span>hello_world.bye<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>);
+  <span class="pl-c">// false</span>
+
+  i18n.has(<span class="pl-s"><span class="pl-pds">'</span>test<span class="pl-pds">'</span></span>);
+  <span class="pl-c">// false</span></pre></div>
+
+<h3>
+<a id="list-available-languages" class="anchor" href="#list-available-languages" aria-hidden="true"><span class="octicon octicon-link"></span></a>List available languages</h3>
+
+<div class="highlight highlight-source-js"><pre>
+i18n.listLangs();
+<span class="pl-c">// ['en', 'fr']</span>
+</pre></div>
+
+<h3>
+<a id="get-basic-localized-string" class="anchor" href="#get-basic-localized-string" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get basic localized string</h3>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-c">// i18n.get(key[, data, options][, lang]);</span>
+i18n.get(<span class="pl-s"><span class="pl-pds">'</span>first_level_namespace.hello_world.hello<span class="pl-pds">'</span></span>);
+<span class="pl-c">// Hello</span>
+
+i18n.get(<span class="pl-s"><span class="pl-pds">'</span>first_level_namespace.hello_world.hello<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>fr<span class="pl-pds">'</span></span>);
+<span class="pl-c">// Bonjour</span>
+</pre></div>
+
+<h3>
+<a id="get-templated-string" class="anchor" href="#get-templated-string" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get templated string</h3>
+
+<p>It uses a basic templating engine, the same as <a href="http://underscorejs.org/#template">underscore</a>.</p>
+
+<p>It works in the form of <code>{{=interpolate}}</code>, <code>{{evaluate}}</code> or <code>{{-escape}}</code> :</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// localized strings</span>
+<span class="pl-k">var</span> en_locales <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">'</span>st<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>{{=interpolate}}{{for(var i = 0, max = 5; i &lt; max; i += 1) {}} to{{}}} {{-escape}}<span class="pl-pds">'</span></span>
+};
+
+<span class="pl-c">// context used in the templated string</span>
+<span class="pl-k">var</span> data <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">'</span>interpolate<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Hello<span class="pl-pds">'</span></span>,
+    <span class="pl-s"><span class="pl-pds">'</span>escape<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\'</span>&lt;the&gt;<span class="pl-cce">\'</span> `&amp;` "World"<span class="pl-pds">'</span></span>
+};
+
+<span class="pl-c">// register the localized string</span>
+i18n.<span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>, en_locales);
+
+<span class="pl-c">// give it a context with the data object</span>
+<span class="pl-k">var</span> st <span class="pl-k">=</span> i18n.get(<span class="pl-s"><span class="pl-pds">'</span>st<span class="pl-pds">'</span></span>, data);
+<span class="pl-c">// "Hello  to to to to to &amp;#x27;&amp;lt;the&amp;gt;&amp;#x27; &amp;#x60;&amp;amp;&amp;#x60; &amp;quot;World&amp;quot;"</span>
+</pre></div>
+
+<h3>
+<a id="change-delimiters" class="anchor" href="#change-delimiters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Change delimiters</h3>
+
+<p>You can also change delimiters by passing the third <code>options</code> arguments</p>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">var</span> st <span class="pl-k">=</span> i18n.get(<span class="pl-s"><span class="pl-pds">'</span>st<span class="pl-pds">'</span></span>, data, {
+    evaluate<span class="pl-k">:</span><span class="pl-sr"> <span class="pl-pds">/</span>&lt;%(<span class="pl-c1">[<span class="pl-c1">\s\S</span>]</span><span class="pl-k">+?</span>)%&gt;<span class="pl-pds">/</span>g</span>;
+    interpolate<span class="pl-k">:</span><span class="pl-sr"> <span class="pl-pds">/</span>&lt;%=(<span class="pl-c1">[<span class="pl-c1">\s\S</span>]</span><span class="pl-k">+?</span>)%&gt;<span class="pl-pds">/</span>g</span>;
+    escape<span class="pl-k">:</span><span class="pl-sr"> <span class="pl-pds">/</span>&lt;%-(<span class="pl-c1">[<span class="pl-c1">\s\S</span>]</span><span class="pl-k">+?</span>)%&gt;<span class="pl-pds">/</span>g</span>;
+});
+</pre></div>
+
+<p>Will result in these delimiters <code>&lt;%=interpolate%&gt;</code>, <code>&lt;%evaluate%&gt;</code> or <code>&lt;%-escape%&gt;</code></p>
+
+<h3>
+<a id="add-default-values-for-templates" class="anchor" href="#add-default-values-for-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add default values for templates</h3>
+
+<p>If you need to have a special key always replaced by the same value (a brand for example),
+you can set it as a <strong>default</strong>.</p>
+
+<p>This <code>key</code> will be then replaced across your application's localized strings and you
+won't need to pass it as a context object to your <code>.get()</code>.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> fr <span class="pl-k">=</span> {
+    welcome<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Bienvenue sur {{=brand}}<span class="pl-pds">'</span></span>
+};
+
+<span class="pl-k">var</span> en <span class="pl-k">=</span> {
+    welcome<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Welcome to {{=brand}}<span class="pl-pds">'</span></span>
+};
+
+<span class="pl-k">var</span> defaults <span class="pl-k">=</span> {
+    fr<span class="pl-k">:</span> {
+        brand<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Ma Marque<span class="pl-pds">'</span></span>
+    },
+    en<span class="pl-k">:</span> {
+        brand<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>My Brand<span class="pl-pds">'</span></span>
+    }
+};
+
+i18n.<span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">'</span>fr<span class="pl-pds">'</span></span>, fr);
+i18n.<span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>, en);
+i18n.setDefaults(defaults);
+
+i18n.get(<span class="pl-s"><span class="pl-pds">'</span>welcome<span class="pl-pds">'</span></span>)
+<span class="pl-c">//Welcome to My Brand</span></pre></div>
+
+<p>You don't have to use localized defaults if you don't need to :</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> defaults <span class="pl-k">=</span> {
+    brand<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>My Brand<span class="pl-pds">'</span></span>
+};
+
+i18n.setDefaults(defaults);
+i18n.setLang(<span class="pl-s"><span class="pl-pds">'</span>fr<span class="pl-pds">'</span></span>);
+
+i18n.get(<span class="pl-s"><span class="pl-pds">'</span>welcome<span class="pl-pds">'</span></span>);
+<span class="pl-c">//Bienvenue sur My Brand</span></pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/yoannmoinet">yoannmoinet</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
