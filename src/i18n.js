@@ -113,9 +113,9 @@ var I18n = function () {
             }
         }
 
-        var obj = parse(lng + '.' + key, defaults) ||
-            parse(key, defaults) ||
-            parse(lng + '.' + key, dico);
+        var obj = parse(lng + '.' + key, dico) ||
+            parse(lng + '.' + key, defaults) ||
+            parse(key, defaults);
         options = options || {};
 
         if (typeof obj === 'string' || typeof obj === 'function') {
