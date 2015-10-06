@@ -1,6 +1,6 @@
 {
   "name": "i18njs",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Simplistic I18N tool for universal/isomorphic Javascript.",
   "main": "dist/i18njs.js",
   "scripts": {
