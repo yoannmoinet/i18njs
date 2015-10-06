@@ -1,23 +1,33 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/yoannmoinet/i18njs/compare/v2.1.2...v2.1.2) (2015-10-06)
+
+
+
+
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/yoannmoinet/i18njs/compare/v2.1.1...v2.1.2) (2015-10-06)
+
+
+### Bug Fixes
+
+* **defaults:** let get defaults without templated locales ([96e4677](https://github.com/yoannmoinet/i18njs/commit/96e4677))
+
+
+
 <a name="2.1.1"></a>
-## 2.1.1 (2015-09-25)
-
-
-
-
-<a name="2.1.1"></a>
-## 2.1.1 (2015-09-25)
+## [2.1.1](https://github.com/yoannmoinet/i18njs/compare/v2.1.0...v2.1.1) (2015-09-25)
 
 
 
 
 <a name="2.1.0"></a>
-# 2.1.0 (2015-08-09)
+# [2.1.0](https://github.com/yoannmoinet/i18njs/compare/v2.0.7...v2.1.0) (2015-08-09)
 
 
 
 
 <a name="2.0.7"></a>
-## 2.0.7 (2015-08-09)
+## [2.0.7](https://github.com/yoannmoinet/i18njs/compare/v2.0.6...v2.0.7) (2015-08-09)
 
 
 ### Bug Fixes
@@ -27,7 +37,7 @@
 
 
 <a name="2.0.6"></a>
-## 2.0.6 (2015-08-09)
+## [2.0.6](https://github.com/yoannmoinet/i18njs/compare/v2.0.5...v2.0.6) (2015-08-09)
 
 
 ### Bug Fixes
@@ -39,7 +49,7 @@
 
 
 <a name="2.0.5"></a>
-## 2.0.5 (2015-08-08)
+## [2.0.5](https://github.com/yoannmoinet/i18njs/compare/v2.0.4...v2.0.5) (2015-08-08)
 
 
 ### Features
@@ -49,7 +59,7 @@
 
 
 <a name="2.0.4"></a>
-## 2.0.4 (2015-08-08)
+## [2.0.4](https://github.com/yoannmoinet/i18njs/compare/v2.0.3...v2.0.4) (2015-08-08)
 
 
 ### Bug Fixes
@@ -64,13 +74,13 @@
 
 
 <a name="2.0.3"></a>
-## 2.0.3 (2015-08-03)
+## [2.0.3](https://github.com/yoannmoinet/i18njs/compare/v2.0.2...v2.0.3) (2015-08-03)
 
 
 
 
 <a name="2.0.2"></a>
-## 2.0.2 (2015-08-03)
+## [2.0.2](https://github.com/yoannmoinet/i18njs/compare/v2.0.1...v2.0.2) (2015-08-03)
 
 
 ### Bug Fixes
@@ -80,7 +90,7 @@
 
 
 <a name="2.0.1"></a>
-## 2.0.1 (2015-07-26)
+## [2.0.1](https://github.com/yoannmoinet/i18njs/compare/v2.0.0...v2.0.1) (2015-07-26)
 
 
 ### Bug Fixes
@@ -99,7 +109,7 @@
 
 
 <a name="2.0.0"></a>
-# 2.0.0 (2015-06-28)
+# [2.0.0](https://github.com/yoannmoinet/i18njs/compare/v1.6.0...v2.0.0) (2015-06-28)
 
 
 ### Bug Fixes
@@ -118,7 +128,7 @@
 
 
 <a name="1.6.0"></a>
-# 1.6.0 (2015-06-05)
+# [1.6.0](https://github.com/yoannmoinet/i18njs/compare/v1.5.0...v1.6.0) (2015-06-05)
 
 
 ### Bug Fixes
@@ -128,7 +138,7 @@
 
 
 <a name="1.5.0"></a>
-# 1.5.0 (2015-06-04)
+# [1.5.0](https://github.com/yoannmoinet/i18njs/compare/v1.4.1...v1.5.0) (2015-06-04)
 
 
 ### Features
@@ -138,7 +148,7 @@
 
 
 <a name="1.4.1"></a>
-## 1.4.1 (2015-06-04)
+## [1.4.1](https://github.com/yoannmoinet/i18njs/compare/v1.4.0...v1.4.1) (2015-06-04)
 
 
 ### Bug Fixes
@@ -148,7 +158,7 @@
 
 
 <a name="1.4.0"></a>
-# 1.4.0 (2015-04-15)
+# [1.4.0](https://github.com/yoannmoinet/i18njs/compare/v1.2.0...v1.4.0) (2015-04-15)
 
 
 ### Bug Fixes
@@ -164,7 +174,7 @@
 
 
 <a name="1.2.0"></a>
-# 1.2.0 (2015-04-08)
+# [1.2.0](https://github.com/yoannmoinet/i18njs/compare/v1.1.0...v1.2.0) (2015-04-08)
 
 
 ### Features
@@ -174,7 +184,7 @@
 
 
 <a name="1.1.0"></a>
-# 1.1.0 (2015-04-06)
+# [1.1.0](https://github.com/yoannmoinet/i18njs/compare/v1.0.1...v1.1.0) (2015-04-06)
 
 
 ### Bug Fixes
@@ -184,13 +194,13 @@
 
 
 <a name="1.0.1"></a>
-## 1.0.1 (2015-04-06)
+## [1.0.1](https://github.com/yoannmoinet/i18njs/compare/v1.0.0...v1.0.1) (2015-04-06)
 
 
 
 
 <a name="1.0.0"></a>
-# 1.0.0 (2015-04-06)
+# [1.0.0](https://github.com/yoannmoinet/i18njs/compare/5a6af04...v1.0.0) (2015-04-06)
 
 
 ### Features
