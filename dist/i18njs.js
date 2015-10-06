@@ -120,7 +120,7 @@ var extend = function (objA, objB) {
     'use strict';
     for (var i in objB) {
         if (objB.hasOwnProperty(i)) {
-            if (objA.hasOwnProperty(i) && typeof objA[i] === 'object') {
+            if (objA.hasOwnProperty(i) && (typeof objA[i] === typeof objB[i])) {
                 objA[i] = extend(objB[i]);
             } else {
                 objA[i] = objB[i];
@@ -219,9 +219,9 @@ var I18n = function () {
             }
         }
 
-        var obj = parse(lng + '.' + key, defaults) ||
-            parse(key, defaults) ||
-            parse(lng + '.' + key, dico);
+        var obj = parse(lng + '.' + key, dico) ||
+            parse(lng + '.' + key, defaults) ||
+            parse(key, defaults);
         options = options || {};
 
         if (typeof obj === 'string' || typeof obj === 'function') {
