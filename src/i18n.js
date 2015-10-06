@@ -10,6 +10,20 @@ var parse = function (key, obj) {
     return obj;
 };
 
+var extend = function (objA, objB) {
+    'use strict';
+    for (var i in objB) {
+        if (objB.hasOwnProperty(i)) {
+            if (objA.hasOwnProperty(i) && typeof objA[i] === 'object') {
+                objA[i] = extend(objB[i]);
+            } else {
+                objA[i] = objB[i];
+            }
+        }
+    }
+    return objA;
+};
+
 var I18n = function () {
     'use strict';
     // PRIVATES
@@ -74,13 +88,17 @@ var I18n = function () {
         return dico;
     };
 
+    this.getDefaults = function () {
+        return defaults;
+    };
+
     this.setLang = function (lang) {
         localLang = lang;
         return localLang;
     };
 
     this.setDefaults = function (options) {
-        defaults = options || {};
+        defaults = extend(defaults, options || {});
     };
 
     this.get = function (key, data, options, lang) {
@@ -95,8 +113,9 @@ var I18n = function () {
             }
         }
 
-        var obj = parse(lng + '.' + key, dico);
-
+        var obj = parse(lng + '.' + key, defaults) ||
+            parse(key, defaults) ||
+            parse(lng + '.' + key, dico);
         options = options || {};
 
         if (typeof obj === 'string' || typeof obj === 'function') {

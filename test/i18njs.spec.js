@@ -111,6 +111,7 @@ describe('i18njs', function () {
             key: 'default'
         });
         expect(i18n.get('ns.inter')).to.eql('default');
+        expect(i18n.get('key')).to.eql('default');
     });
 
     it('should have localized defaults', function () {
@@ -124,8 +125,10 @@ describe('i18njs', function () {
         });
         i18n.setLang('en');
         expect(i18n.get('ns.inter')).to.eql('default_en');
+        expect(i18n.get('key')).to.eql('default_en');
         i18n.setLang('fr');
         expect(i18n.get('ns.inter')).to.eql('default_fr');
+        expect(i18n.get('key')).to.eql('default_fr');
     });
 
     it('should overwrite defaults', function () {

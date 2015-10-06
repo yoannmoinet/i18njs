@@ -253,8 +253,10 @@ i18n.add('fr', fr);
 i18n.add('en', en);
 i18n.setDefaults(defaults);
 
-i18n.get('welcome')
+i18n.get('welcome');
 //Welcome to My Brand
+i18n.get('brand');
+// My Brand
 ```
 
 You don't have to use localized defaults if you don't need to :
@@ -269,4 +271,19 @@ i18n.setLang('fr');
 
 i18n.get('welcome');
 //Bienvenue sur My Brand
+```
+
+You can also check your defaults :
+
+```javascript
+i18n.getDefaults();
+//{
+//  brand: 'My Brand',
+//  fr: {
+//      brand: 'Ma Marque'
+//  },
+//  en: {
+//      brand: 'My Brand'
+//  }
+//}
 ```
