@@ -41,11 +41,11 @@
   },
   "homepage": "https://github.com/yoannmoinet/i18njs",
   "devDependencies": {
-    "concat-cli": "yoannmoinet/concat-cli",
-    "conventional-changelog": "0.2.1",
+    "concat-cli": "^1.0.*",
+    "conventional-changelog": "0.4.3",
     "eslint": "^0.24.1",
     "expect.js": "^0.3.1",
-    "jscs": "^1.13.1",
+    "jscs": "^2.1.*",
     "mocha": "^2.2.5",
     "uglify-js": "^2.4.24",
     "umd": "^3.0.1"
