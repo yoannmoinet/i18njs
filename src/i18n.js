@@ -14,7 +14,7 @@ var extend = function (objA, objB) {
     'use strict';
     for (var i in objB) {
         if (objB.hasOwnProperty(i)) {
-            if (objA.hasOwnProperty(i) && typeof objA[i] === 'object') {
+            if (objA.hasOwnProperty(i) && (typeof objA[i] === typeof objB[i])) {
                 objA[i] = extend(objB[i]);
             } else {
                 objA[i] = objB[i];
