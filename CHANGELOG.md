@@ -1,6 +1,16 @@
-<a name="2.1.3"></a>
-## [2.1.3](https://github.com/yoannmoinet/i18njs/compare/v2.1.3...v2.1.3) (2015-10-06)
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/yoannmoinet/i18njs/compare/v2.1.4...v2.1.4) (2015-10-07)
 
+
+
+
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/yoannmoinet/i18njs/compare/v2.1.3...v2.1.4) (2015-10-07)
+
+
+### Features
+
+* instrumentalize the templating feature ([5af18a4](https://github.com/yoannmoinet/i18njs/commit/5af18a4))
 
 
 
@@ -131,10 +141,10 @@
 
 ### Features
 
+* add Travis CI ([988fc16](https://github.com/yoannmoinet/i18njs/commit/988fc16))
 * add changelog ([45a3ccd](https://github.com/yoannmoinet/i18njs/commit/45a3ccd))
 * add defaults template values ([3601034](https://github.com/yoannmoinet/i18njs/commit/3601034))
 * add linting ([b9de51a](https://github.com/yoannmoinet/i18njs/commit/b9de51a))
-* add Travis CI ([988fc16](https://github.com/yoannmoinet/i18njs/commit/988fc16))
 * **npm:** add scripts ([4b6b378](https://github.com/yoannmoinet/i18njs/commit/4b6b378))
 
 
