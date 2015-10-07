@@ -119,37 +119,42 @@ var I18n = function () {
         options = options || {};
 
         if (typeof obj === 'string' || typeof obj === 'function') {
-            var i;
-            var settings = {
-                evaluate: options.evaluate || evaluate,
-                interpolate: options.interpolate || interpolate,
-                escape: options.escape || escape
-            };
-            var newDatas = {};
-            var defs = defaults[localLang] || defaults;
-
-            for (i in defs) {
-                if (defs.hasOwnProperty(i)) {
-                    newDatas[i] = defs[i];
-                }
-            }
-
-            for (i in data) {
-                if (data.hasOwnProperty(i)) {
-                    newDatas[i] = data[i];
-                }
-            }
-
-            if (typeof obj !== 'function' && typeof template === 'function') {
-                obj = template(obj, settings);
-            }
-
-            return obj(newDatas);
+            return this.templateString(obj, data, options, lng);
         } else if (typeof obj === 'object') {
             return obj;
         }
 
         return key;
+    };
+
+    this.templateString = function (st, data, options, lng) {
+        var i;
+        options = options || {};
+        var settings = {
+            evaluate: options.evaluate || evaluate,
+            interpolate: options.interpolate || interpolate,
+            escape: options.escape || escape
+        };
+        var newDatas = {};
+        var defs = defaults[lng] || defaults;
+
+        for (i in defs) {
+            if (defs.hasOwnProperty(i)) {
+                newDatas[i] = defs[i];
+            }
+        }
+
+        for (i in data) {
+            if (data.hasOwnProperty(i)) {
+                newDatas[i] = data[i];
+            }
+        }
+
+        if (typeof st !== 'function' && typeof template === 'function') {
+            st = template(st, settings);
+        }
+
+        return st(newDatas);
     };
 };
 
