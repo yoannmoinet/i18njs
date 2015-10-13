@@ -116,18 +116,48 @@ var parse = function (key, obj) {
     return obj;
 };
 
-var extend = function (objA, objB) {
+var extend = function (a, b) {
     'use strict';
-    for (var i in objB) {
-        if (objB.hasOwnProperty(i)) {
-            if (objA.hasOwnProperty(i) && (typeof objA[i] === typeof objB[i])) {
-                objA[i] = extend(objB[i]);
+    for (var i in b) {
+        if (a.hasOwnProperty(i)) {
+            var tA = typeof a[i];
+            var tB = typeof b[i];
+            if (tA === tB) {
+                if (tA !== 'object') {
+                    a[i] = b[i];
+                } else {
+                    extend(a[i], b[i]);
+                }
             } else {
-                objA[i] = objB[i];
+                a[i] = b[i];
             }
+        } else if (b.hasOwnProperty(i)) {
+            a[i] = b[i];
         }
     }
-    return objA;
+    return a;
+};
+
+var templateString = function (st, data, options, lng, defaults) {
+    'use strict';
+    var i;
+    var evaluate = /\{\{([\s\S]+?)\}\}/g;
+    var interpolate = /\{\{=([\s\S]+?)\}\}/g;
+    var escape = /\{\{-([\s\S]+?)\}\}/g;
+    options = options || {};
+    var settings = {
+        evaluate: options.evaluate || evaluate,
+        interpolate: options.interpolate || interpolate,
+        escape: options.escape || escape
+    };
+    var newDatas = extend(extend(defaults, defaults[lng]), data) ||
+        defaults || {};
+
+    if (typeof st !== 'function' && typeof template === 'function') {
+        st = template(st, settings);
+    }
+
+    return st(newDatas);
 };
 
 var I18n = function () {
@@ -136,9 +166,6 @@ var I18n = function () {
     var localLang = 'en';
     var dico = {};
     var defaults = {};
-    var evaluate = /\{\{([\s\S]+?)\}\}/g;
-    var interpolate = /\{\{=([\s\S]+?)\}\}/g;
-    var escape = /\{\{-([\s\S]+?)\}\}/g;
 
     this.add = function (lang, ns, locales) {
         var i;
@@ -154,12 +181,7 @@ var I18n = function () {
             dico[lang][ns] = dico[lang][ns] || {};
             obj = dico[lang][ns];
         }
-
-        for (i in locales) {
-            if (locales.hasOwnProperty(i)) {
-                obj[i] = locales[i];
-            }
-        }
+        obj = extend(obj, locales);
     };
 
     this.has = function (key, lang) {
@@ -218,49 +240,19 @@ var I18n = function () {
                 lng = options;
             }
         }
-
         var obj = parse(lng + '.' + key, dico) ||
             parse(lng + '.' + key, defaults) ||
             parse(key, defaults);
         options = options || {};
+        var toReturn = key;
 
         if (typeof obj === 'string' || typeof obj === 'function') {
-            return this.templateString(obj, data, options, lng);
+            toReturn = templateString(obj, data, options, lng, defaults);
         } else if (typeof obj === 'object') {
-            return obj;
+            toReturn = obj;
         }
 
-        return key;
-    };
-
-    this.templateString = function (st, data, options, lng) {
-        var i;
-        options = options || {};
-        var settings = {
-            evaluate: options.evaluate || evaluate,
-            interpolate: options.interpolate || interpolate,
-            escape: options.escape || escape
-        };
-        var newDatas = {};
-        var defs = defaults[lng] || defaults;
-
-        for (i in defs) {
-            if (defs.hasOwnProperty(i)) {
-                newDatas[i] = defs[i];
-            }
-        }
-
-        for (i in data) {
-            if (data.hasOwnProperty(i)) {
-                newDatas[i] = data[i];
-            }
-        }
-
-        if (typeof st !== 'function' && typeof template === 'function') {
-            st = template(st, settings);
-        }
-
-        return st(newDatas);
+        return toReturn;
     };
 };
 
