@@ -25,7 +25,10 @@ You can register your helper simply by using the `.get()` function of i18njs
 ```javascript
 Handlebars.registerHelper('i18n',
     function () {
-        return i18njs.get.apply(i18njs, arguments);
+        // Pass all arguments except the last one
+        // that is a Handlebars specific.
+        return i18njs.get.apply(i18njs,
+                Array.prototype.slice.call(arguments, 0, -1));
     }
 );
 ```
