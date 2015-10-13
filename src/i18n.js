@@ -46,12 +46,21 @@ var templateString = function (st, data, options, lng, defaults) {
     };
     var newDatas = extend(extend(defaults, defaults[lng]), data) ||
         defaults || {};
+    var needsTemplate = false;
 
-    if (typeof st !== 'function' && typeof template === 'function') {
+    for (i in settings) {
+        if (settings.hasOwnProperty(i) && settings[i].test(st)) {
+            needsTemplate = true;
+            break;
+        }
+    }
+
+    if (needsTemplate && typeof st !== 'function' &&
+        typeof template === 'function') {
         st = template(st, settings);
     }
 
-    return st(newDatas);
+    return typeof st === 'function' ? st(newDatas) : st;
 };
 
 var I18n = function () {
