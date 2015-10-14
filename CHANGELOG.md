@@ -1,6 +1,16 @@
-<a name="2.1.6"></a>
-## [2.1.6](https://github.com/yoannmoinet/i18njs/compare/v2.1.6...v2.1.6) (2015-10-13)
+<a name="2.1.7"></a>
+## [2.1.7](https://github.com/yoannmoinet/i18njs/compare/v2.1.7...v2.1.7) (2015-10-14)
 
+
+
+
+<a name="2.1.7"></a>
+## [2.1.7](https://github.com/yoannmoinet/i18njs/compare/v2.1.6...v2.1.7) (2015-10-14)
+
+
+### Bug Fixes
+
+* **extend:** simplify overcomplicated extend function ([6429bbf](https://github.com/yoannmoinet/i18njs/commit/6429bbf))
 
 
 
