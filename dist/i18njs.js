@@ -119,19 +119,7 @@ var parse = function (key, obj) {
 var extend = function (a, b) {
     'use strict';
     for (var i in b) {
-        if (a.hasOwnProperty(i)) {
-            var tA = typeof a[i];
-            var tB = typeof b[i];
-            if (tA === tB) {
-                if (tA !== 'object') {
-                    a[i] = b[i];
-                } else {
-                    extend(a[i], b[i]);
-                }
-            } else {
-                a[i] = b[i];
-            }
-        } else if (b.hasOwnProperty(i)) {
+        if (a.hasOwnProperty(i) || b.hasOwnProperty(i)) {
             a[i] = b[i];
         }
     }
