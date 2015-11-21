@@ -7,6 +7,8 @@
 [![bower version](https://img.shields.io/bower/v/i18njs.svg?style=flat)](http://bower.io/search/?q=i18njs)
 [![travis](https://travis-ci.org/yoannmoinet/i18njs.svg)](https://travis-ci.org/yoannmoinet/i18njs)
 
+[![NPM](https://nodei.co/npm-dl/i18njs.png?months=1)](https://npmjs.org/package/i18njs)
+
 ----
 
 
